@@ -1,0 +1,41 @@
+
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Register Form</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    {% comment %} {% if form.errors %}
+      <ul class="text-danger">
+        {% for field in form %}
+          {% for error in field.errors %}
+            <li>{{ field.label }}: {{ error }}</li>
+          {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %} {% endcomment %}
+
+    <button class="btn btn-primary">Register</button>
+  </form>
+  <p>Already have an account? <a href="{% url 'login' %}">Log in here</a></p>
+{% endblock %}
+
+
+{% comment %} {% extends "layout.html" %}
+
+{% block content %}
+
+<form method="POST">
+<h2>Register Form</h2>
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit" class="btn btn-primary">Register</button>
+</form>
+<p>Already Have an Account? <a href="{% url 'login' %}" >LogIn Here></a></p>
+{% endblock %} {% endcomment %}
+
+
